@@ -33,6 +33,10 @@ include = ["src", "tests"]
 defineConstant = { DEBUG = true }
 reportMissingImports = true
 reportMissingTypeStubs = true
+reportUnusedFunctions = true
+reportUnusedVariables = true
+reportUntypedFunctionDecorator = true
+reportUnknownParameterType = true
 typeCheckingMode = "standard"
 pythonVersion = "3.8"
 pythonPlatform = "All"
