@@ -1,3 +1,4 @@
+from __future__ import annotations
 from astropy.table import Table  # type: ignore
 from astropy.io.ascii import InconsistentTableError  # type: ignore
 from pathlib import Path
@@ -29,11 +30,14 @@ class CloudyModel:
     `m.skipped` contains a dict of each extension that was skipped with its reason.
     """
 
-    def __init__(self, prefix: str):
-        self.filepaths = Path(".").glob(f"{prefix}.*")
-        self.data = {}
-        self.io = {}
-        self.skipped = {}
+    def __init__(self, prefix: str | Path):
+        if isinstance(prefix, Path):
+            self.filepaths = prefix.parent.glob(f"{prefix.stem}.*")
+        else:
+            self.filepaths = Path(".").glob(f"{prefix}.*")
+        self.data: dict[str, Table] = {}
+        self.io: dict[str, str] = {}
+        self.skipped: dict[str, str] = {}
         for filepath in self.filepaths:
             saveid = filepath.suffix.strip(".")
             if saveid in IGNORE_EXTENSIONS:
