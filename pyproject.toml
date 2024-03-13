@@ -1,6 +1,6 @@
 [project]
 name = "cloudytab"
-version = "0.1.0rc2"
+version = "0.1.0"
 description = "Ultra-lightweight python wrapper for output files from the Cloudy astrophysical plasma simulation code"
 authors = [
     { name = "William Henney", email = "will@henney.org" }
